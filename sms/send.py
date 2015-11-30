@@ -1,40 +1,40 @@
 from twilio.rest import TwilioRestClient
 from twilio.rest.resources import Connection
-from twilio.rest.resources.connection  import PROXY_TYPE_HTTP
+import json
+
+with open('../config.json','r') as f:
+    confif = json.load(f)
+
+from twilio.rest.resources.connection  import conf['proxy']['ProxyType']
 import sys
 
+
+
 # Your Account Sid and Auth Token from twilio.com/user/account
-account_sid = "xxx"
-auth_token  = "xxx"
+account_sid = config['auth']['AuthSid']
+auth_token  = config['auth']['AuthToken']
 
 #-----------------------------------------------------------------------------------------
 # Proxy settings, like you want, use PROXY_TYPE_SOCKS5 for socks proxy
-Connection.set_proxy_info(
-    '10.3.100.207',  #proxy server
-    8080,               #port
-    proxy_type=PROXY_TYPE_HTTP,
-    )
+if conf['proxy']['use_proxy']:
+    Connection.set_proxy_info(
+        conf['proxy']['Proxy'],  #proxy server
+        conf['proxy']['Port'],               #port
+        proxy_type=conf['proxy']['ProxyType']
+        )
 #-----------------------------------------------------------------------------------------
 
 client = TwilioRestClient(account_sid, auth_token)
 
 def print_error():
-    print("Usages : sms [name] ['message']")
+    print("Usage : sms [name] ['message']")
+    print("Define `name` in `config.json`. ")
 
-def send_message(num,text="Sample Text"):
+def send_message(num,text=conf['user']['message']):
     message = client.messages.create(body=text,
         to=num,                                     # Replace with your phone number
-        from_="+1234567889")               # Replace with your Twilio number
+        from_= conf['personal']['your_twilio_number']             # Replace with your Twilio number
     print ("[{}] -> {} ".format(message.sid,message.body))
-
-def who(s):
-    if s == 'person1_name':
-        num  = "+911234567890" # 10 digit mobile number of that person
-    elif s == 'person2_name':
-        num = "+911234567890"
-    elif s == 'me':
-        num = "+911234567890" # your phone number
-    return num
 
 def  main_oldy():
     """
@@ -67,12 +67,13 @@ def  main():
     print (command[0])
     num = []
     text = []
-    num = who(command[0])
+    # num = who(command[0])
+    num = conf['personal']['verified_numbers'][s]
 
     ## in case I cannot find whose number, revert the message to you ;)
     if not num:
         print ("message reverted to you.")
-        num = "+911234567890"           #your number
+        num = conf['personal']['your_twilio_number']          #your number
     text = command[1]
 
     print ("{} to {}.".format(text,num))

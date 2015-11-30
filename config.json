@@ -1,0 +1,21 @@
+{
+    "auth":{
+                    "AuthSid":"xxxx",
+                    "AuthToken":"root"
+                },
+
+    "proxy":{ "_comment": "Or `ProxyType` can also be = PROXY_TYPE_SOCKS5  // use_proxy = 0 or 1",
+                    "use_proxy" :1,
+                    "ProxyType":"PROXY_TYPE_HTTP",
+                    "Proxy":"example.com",
+                    "Port":8080
+                },
+    "personal":{
+        "_comment":"MAKE SURE FOLLOWING NUMBERS ARE VERIFIED HERE --  `https://www.twilio.com/user/account/phone-numbers/verified`",
+        "your_twilio_number":"+1234567890",
+        "verified_numbers":{"Custome_name_Jack":"+911234567890","Custom_name_John":"+911234567890"},
+    },
+    "user":{
+        "default_message":"Oh! Butterfly soup for mom. Taken?"
+    }
+}
