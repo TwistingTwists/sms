@@ -1,7 +1,7 @@
 {
     "auth":{
-                    "AuthSid":"xxx",
-                    "AuthToken":"xxx"
+                    "AuthSid":"your_twilio configuration sid",
+                    "AuthToken":"your_twilio configuration token"
                 },
 
     "proxy":{ "_comment": "Or `ProxyType` can also be = SOCKS5 // use_proxy = 0 or 1",
