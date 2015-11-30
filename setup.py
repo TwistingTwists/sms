@@ -15,6 +15,7 @@ if __name__ == "__main__":
             author = 'Abhishek Tripathi',
             author_email = 'abhishek.tripathi456@gmail.com',
             description = 'Personal smsing module',
+            url = 'https://github.com/TwistingTwists/sms'
             packages = ['sms'],
             entry_points = {
                 'console_scripts': [
