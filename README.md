@@ -2,31 +2,42 @@
 
 A simple SMSing [twilio](https://www.twilio.com/) wrapper. Only a few steps away from sending yourself message-alerts. 
 
-## Installation:
+### Steps to use `sms`:
+
+1. Sign Up at [twilio](http://twilio.com/).
+2. Get your first twilio number
+3. Verifiy phone numbers 
+4. Find `auth_sid` and `auth_token` on settings page.
+
+
+### User Configuration:
+Configuration file = `/data/config.json`
+ 
+ **Note**: (for following in `/data/config.json`)
+
+ *   `Custome_name_one` in `verified_numbers` is a custom name. It can be anything as user likes.
+ *   `default_message`
+
+
+### Installation:
 ```
-git clone https://github.com/TwistingTwists/sms.git
+git clone https://github.com/TwistingTwists/sms.git sms
 cd sms
 python setup.py install
 ```
-## configuration:
-Well, to use this, there a few things you need to configure correctly.
 
-* account_sid  and auth_token from https://www.twilio.com/user/account/settings 
-* proxy, if any 
-    - if you are not using proxy, please delete the following portion from `sms/send.py` file.
-        ```
-        Connection.set_proxy_info(
-            '10.3.100.207',  #proxy server
-            8080,               #port
-            proxy_type=PROXY_TYPE_HTTP,
-            )
-
-        ```
-* add numbers to 'verified numbers' at https://www.twilio.com/user/account/phone-numbers/verified
-
-##Usage:
+###Usage:
 `sms me "Yeay Let's eat!"`
-Caution : Please use double quotes. 
+Caution : Please use double quotes. `me` is a `Custom_name` defined by user.
+>*incorrect usage* :
+> sms me Yeay Let's eat! 
+
+### FAQs:
+
+* #####Can I use to send messages to any phone number?
+> yes. If only you have a paid twilio account. Free service includes sending messages to ONLY your verfied numbers.
+
+* ##### Have confusion/questions? Please use   [issues](https://github.com/TwistingTwists/sms/issues) page.
 
 ###Exciting usages : 
  * Parse a webpage for updates. Notify yourself on update.
