@@ -1,5 +1,6 @@
 """Locate the data files in the eggs to open"""
 
+"Special thanks to https://github.com/OrkoHunter/ping-me/tree/master/ping_me/data"
 import os
 import sys
 

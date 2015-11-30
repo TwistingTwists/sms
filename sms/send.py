@@ -9,6 +9,8 @@ json_path = module_locator.modeule_path()
 with open(json_path+"/"+'config.json','r') as f:
     conf = json.load(f)
 
+    #Speical thanks to  https://github.com/OrkoHunter/ping-me/blob/master/ping_me/authenticate.py#L102
+
 from twilio.rest.resources.connection  import PROXY_TYPE_SOCKS5, PROXY_TYPE_HTTP
 import sys
 
