@@ -1,0 +1,23 @@
+{
+    "auth":{
+                    "AuthSid":"xxx",
+                    "AuthToken":"xxx"
+                },
+
+    "proxy":{ "_comment": "Or `ProxyType` can also be = SOCKS5 // use_proxy = 0 or 1",
+                    "use_proxy" :1,
+                    "ProxyType":"HTTP",
+                    "Proxy":"10.3.100.207",
+                    "Port":8080
+                },
+    "personal":{
+        "_comment":"MAKE SURE FOLLOWING NUMBERS ARE VERIFIED HERE --  `https://www.twilio.com/user/account/phone-numbers/verified` +91 is used here for INDIA in Custome_name_one and so on",
+        "your_twilio_number":"+123456789",
+        "verified_numbers":{"Custom_name_one":"+911234567890","Custom_name_two":"+911234567890",
+        "Custom_name_three":"+911234567890"}
+    },
+
+    "user":{
+        "default_message":"Oh! Butterfly soup for mom. Taken?"
+    }
+}
