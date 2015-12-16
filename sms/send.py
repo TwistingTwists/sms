@@ -22,18 +22,21 @@ auth_token  = conf['auth']['AuthToken']
 
 #-----------------------------------------------------------------------------------------
 # Proxy settings, like you want, use PROXY_TYPE_SOCKS5 for socks proxy
-if (conf['proxy']['ProxyType'] == "HTTP"):
-    Connection.set_proxy_info(
-        str(conf['proxy']['Proxy']),
-        conf['proxy']['Port'],
-        proxy_type=PROXY_TYPE_HTTP,
-        )
+if (conf['proxy']['use_proxy']==1):
+    if (conf['proxy']['ProxyType'] == "HTTP"):
+        Connection.set_proxy_info(
+            str(conf['proxy']['Proxy']),
+            conf['proxy']['Port'],
+            proxy_type=PROXY_TYPE_HTTP,
+            )
 
+    else:
+        Connection.set_proxy_info(
+            str(conf['proxy']['Proxy']),  #proxy server
+            conf['proxy']['Port'],               #port
+            proxy_type=PROXY_TYPE_SOCKS5)
 else:
-    Connection.set_proxy_info(
-        str(conf['proxy']['Proxy']),  #proxy server
-        conf['proxy']['Port'],               #port
-        proxy_type=PROXY_TYPE_SOCKS5)
+    pass
 #-----------------------------------------------------------------------------------------
 
 client = TwilioRestClient(account_sid, auth_token)
